@@ -1,0 +1,68 @@
+// it is a basic commands of linux / ubantu 
+
+
+----*** linux command are case sensitive ***----
+
+
+1) echo -> like print 
+2) whoami -> return the username 
+3) echo $0 -> return the current directory of where we are ?  // also use pwd command for returning current directory 
+4) history -> it's use for show privious command which we are exucate 
+5) apt -> it is a package manager in linux adavance package tool 
+6) nano -> it is basic text editor for linux 
+7) apt list -> showcase of which module is installed or not in root directory 
+8) apt install -> we install only this pacakges which are listed in apt list 
+9) apt update  -> it update the apt list  // basicaly update list so can we install packages through apt install 
+10) apt remove packageName -> removing the already installed module 
+11) pwd -> shows the where we are (return current directoy path )
+12) ls -l -> return long info about current folder file 
+13) absoulte path -> start with / in linux 
+14) relative path -> strat with name of directory 
+15) cd ~ -> go to direct on root directory 
+16) mkdir folderName -> create a new folder 
+17) mv folder1Name folder2name -> for rename the existing folder 
+18) touch fileName -> create newfile
+19) touch file1Name file2Name.. -> create multiple file in one command 
+20) space + ctrl + w -> remove word from command in CLI 
+21) rm file name -> remove the file 
+22) rm -r directoryName -> for removing the directory
+23) nano -> it is a basic CLI text editor in which we modify our text file 
+24) cat -> for reading file and also use for concating two files
+25) more -> use for reading long file 
+26) head -n 5 => showing first 5 line from head 
+27) tail -n 5 => showing last 5 line from head 
+28) cat file1 > file2 => paste  all data of file1 to file2 "basically '>' this symbol denote" 
+29)grep SearchWord FileName (fileName)  -> it is use for searching word in particular file "in here search word is case sensitive " (search  in multiplefile)
+30)grep -i searchWord FileName -> search  without case sensitive 
+31)find -> all the file in current directory 
+32)ls -a -> show all the file with hidden file 
+33)find -type d ->  find only  all directory/ folder 
+34)find -type f -> find  only all files in particular directory 
+35)find -r -type f -> find all files recurssively so that its find inside the directory 
+36)find -type f -name "FileName" -> find file by name 
+37)writing multiple command in one line -> the commands is separated by ';' , in this exaution of command if first command fail next command is excauted.
+38) writing multiple command in one line -> the commands is separated by '&&' , in this exaution of command if first command fail next command is not excauted and furthur process is stop. 
+39) break up multiple command in multiple lines with using '\'
+
+// Enviroment varible // 
+-> An environment variable, often referred to as an "envvar," is a variable outside of a computer program that stores configuration information or settings for the operating system or various software applications
+
+
+40)for making Environment varible  -> export ENVNAME = VLAUE
+41) for printing all envvaribale -> printenv 
+42) for printing particluar envvar -> print env ENVNAME
+43) for append text in file use >> 
+eg echo hello world >> hello.txt  // in this command hello world ia append to the hello.txt file 
+44) for killing the process -> kill processid // processid we given bt ps 
+45) ps -> it show the all process running on the terminal 
+46)adding the user -> useradd -m userName  //its add user in home directory 
+47)modify the user -> usermod 
+48)deleting the user -> userdel 
+49)cat /etc/passwd -> show the user in home dir //user account details 
+50)modify user with shell -> usermod -s /bin/bash  userName // its denote the modify user present in shell to the bash 
+51) cat etc/shadow -> password is stored in encrypted formet and its allow to show only by root user 
+52)Difference between adduser & useradd
+
+
+
+

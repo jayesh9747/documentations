@@ -1,0 +1,8 @@
+-> hot topics for covering / refreshing the expressjs 
+
+-> req and res object and its methods 
+-> cookies send and cookies get 
+
+->difference between authentication and autherization
+-> JWT web Tokens
+->

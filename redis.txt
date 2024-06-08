@@ -1,0 +1,160 @@
+Redis documentaion :
+
+-> Redis is an open source, advanced key-value store and an apt solution for building highperformance, scalable web applications.
+-> redis is a no sql database 
+-> redis is popular for its various type of data types
+-> redis is running on port 6379 so we expose this port to our local machine 
+-> redis is running most on the CLI
+-> redis stack -- in this we have redis cli and redis GUI , GUI is not used in production
+
+*??? note ??? *
+-> redis command is not case sensitive 
+
+
+--:> redis Architecture 
+->  two main process 
+1) Redis client 
+2) Redis Server 
+
+--:> installing of redis 
+
+-> we use docker in linux , windows and docker also 
+-> best practises is the use redis in docker because it is use in production. and deployment 
+-> so installing in docker use this commmand
+      docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+-> for this command write in the dockerfile also and docker compose also 
+-> for runing the redis image in cmd aur make it iteractive use this commad 
+      docker exec -it imageid bash 
+    (that means we make all command after that cmd is running on this docker container which running on docker deamon )
+-> use redisio for the uses of node application 
+
+
+
+
+--:> Redis DataTypes 
+
+1)String 
+-> SET name "Jayesh" 
+2)Hashes
+3)lists
+4)steps
+5)Sorted Sets
+
+
+--:> Redis Commands  
+
+
+//  set , get command is use for only string data type 
+
+--:> command for string 
+
+1) SET
+eg set name jayesh 
+
+2) GET 
+eg get name 
+
+// set the key value of 
+<entity>:<id> value 
+eg. 
+    set user:1 piyush
+    set user:2 jayesh 
+    ser user:3 mahesh 
+
+3) SET with nx   -> it is use for insert only when its key  is not in database  
+eg set name "jayesh" nx  
+
+4) SET with xx   -> 
+eg 
+
+5) MGET ->>  its took multiple keys value in one command 
+6) MSET ->> its set multiple key value in single command
+
+7)incr  ->> use for increment the value of key value 
+eg set count 0
+   incr count 
+   incrby count 10
+
+8)set time limit on particlur key that means TTL 
+
+
+
+--:> command for list 
+
+1) LPUSH ->  push from left side
+2) RPUSH -> push from right side 
+
+// we use list as stack or queue 
+
+3) LPOP  -> pop from left side
+4) RPOP -> pop from right side
+
+5) LLEN -> return the length of list 
+6) LMOVE -> atomically moves elements from one lists to another 
+
+8) lrange list_name 0 -1 -> for reading the list element  (here we can not use get aur set methods for pushing and reading elements)
+
+
+//  blocking commad :->
+
+1) blpop -> it is wait for the massage pop for given time
+    eg .  blpop key_name time_second 
+
+2) blmove -> use blocking mode move the key value pair
+
+//for deleting key 
+
+1) DEL key_name (its delete all data types key)
+
+
+// show all key of same patrons 
+eg. 
+    set user:0 "jayesh"
+    set user:1 "mahesh"
+    set user:2 "jignesh"
+
+use command KEYS user:* -> its give all user key 
+
+
+
+/////////             SETS             ///////////////
+
+-> it is a unordered colection of  uniquie element
+
+
+1) Sadd -> it uses  for the adding key in the set 
+2) srem ->  for removing elem. from Sets
+3) sismember -> checking for element is exits or not 
+4) sinter -> return the comman elements from both set 
+5) scard -> return the length of set 
+
+/////////             HASH             ///////////////
+
+// hash --:> its is like of json object 
+
+1)hset -> use to set the object in the data base 
+2)hget -> use to get the object property from the perticular object 
+
+eg. hset bike:1 model Deimos brand Ergonom type 'Enduro bikes' price 4972
+    //  (integer) 4     -> its show that 4 thing is inserted in the bike:1 hashmap 
+
+    hget bike:1 price   -> its return the price = 4972
+
+3)hgetall -> get all property of particular object 
+
+4)hmget -> get multiple values from object 
+
+
+
+/////////             SORTED SETS             ///////////////
+
+--> its is like of a set but further more its behave like a priority queue 
+
+
+
+---> two methods which use more in backed 
+
+json.parse()  // its convert string into object 
+json.stringify()  // its convert object to String
+
+// complete the tutorial 

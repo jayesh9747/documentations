@@ -1,0 +1,9 @@
+NGINX tutorial:-> 
+
+-> Cache HTTP requests
+-> Can Handle 10000 concurrent Requests 
+-> Act as Reverse Proxy 
+-> Act as load balancer 
+->Act as Api Gateway 
+-> Server and chace Static files like imgaes, vedios, tec.
+-> handle SSL Certificates

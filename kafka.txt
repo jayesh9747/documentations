@@ -1,0 +1,7 @@
+kakfa tutorial :->
+
+kafka has high troughput(DB mai operation kar ne ki perfromence)
+
+kafka high throughput but low storage 
+database low throughput but high storage
+

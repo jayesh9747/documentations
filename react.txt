@@ -1,0 +1,51 @@
+for serching  file by its name -> control + m +p
+
+for making the component -> some step should note that
+1) make functional components
+2) in component we writing logic in above the return statement
+3) in return statement only return the jsx (html)  for writing js use {} bracket 
+4) for conditinal rendering use two method -> ternery operator or && operator 
+5) hooks return an array of size 2 ->
+    arr[0] -> it is a varaible 
+    arr[1] -> it a updated function for updating the variable 
+6) we directly pass function or write the function don't put bracket after the function name
+7) for managing the state -> for managing state we use hooks ethier using of local varible they do not work in component
+8) onevent handler we pass the function for handing the event 
+9) for passing the data friom the parent to child we uses the props method
+10) we passing the function through the props 
+11) props are immutable from the children side we can not change the value of props 
+12)props is kind of similar to function args 
+
+
+
+=> passing children in react component
+for passing childern as the html from we use the reactNode type in typescript 
+
+=> styling the React components
+->for styling the react component we use seperate file in this folder structure 
+and put all vanila css style inside this file 
+-> when we use vanila css then make sure that there is css classes become global so that we use anywhere , but it has one disadvantage we can not use this with same name in two different differnt files 
+-> so we use the css module method for avoiding this type of error.
+
+
+=> statemanagement in react 
+
+->React updates state asynchronously. that means sare jo state hote hai woh ek sath last mai jake update hote hai jab component rerender hota hai , one by one state(variable) update nahi hota hai 
+->state is stored outside of components
+->use hooks at the top level of your component.
+->avoid redundant state variables 
+->group  related variable inside an object .
+->avoid deeply nested structure
+-> mantain purity in react components -> how ?
+        we delare variable outside the rendering than not update this variable inside the rendering.
+        if we declare variable inside the rendering then this is tottaly fine to update this varibale 
+-> updating the object using useState -> we can not update the existing object property we give a new object to useState to change whole object because the state is immutable .
+
+for easy implementaion or form data transfromation we use 3 method :
+1) useRef hook for refering any data, button , input feild 
+2) useState hook : it is used most but when there is complex form then we sholud use the useRef hook 
+3) importing the  npm i react-hook-form@7.43 -> it is most easist method for collecting data and sumbiting the data in form of object 
+
+for data validation we use the npm i zod@3.20.6
+
+for featching apis we use the axios module : npm i axios@1.3.4

@@ -1,0 +1,35 @@
+=> here we start the SQL in DBMS 
+
+* for creating the database-> CREATE DATABSE Database_Name;
+* for decimal query syntax -> decimal [(p [,s])]
+where p stands for Precision, the total number of digits in the value, i.e. on both sides of the decimal point
+s stands for Scale, number of digits after the decimal point
+
+topic to cover sql :->
+column alias: (as)
+concatenation Operator(||) :-> it is used for concatenate two or more colums 
+eliminating the duplicate rows:-> use 'DISTINCT' keyword
+comparision or realtional Operator in where clause :>
+ = equal to 
+ >= greater than equal to 
+ <= less than equl to 
+ <> not equal to 
+-> special oprator provided by sql 
+
+---------------------------------------------------------------
+
+//postgres (psql commands)
+
+\l : for showing all database 
+\c : connecting the databse 
+\! cls : for  clearing the screen 
+\q : from exit from the postgres 
+\d : showing from the all tables from database
+\d table_Name : describe full table 
+
+
+
+
+
+CREATE DATABSE test; : for creating the database
+DROP TABLE table_Name : for  drop/deleting the table name 

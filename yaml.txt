@@ -1,0 +1,102 @@
+refer the website for technical blog or documention : learncodeonline.com
+
+
+
+
+------------     YMAL tutorial     -----------
+
+-> ymal is a anti markup  language and it is human-readable data serialization formet 
+-> it is be a popular because of readability , portability and version control 
+-> YAML is case sensitive
+-> it is similar kind of python 
+-> yml file is language independent so we can use the tml file for conversion of this multiple languge 
+
+
+
+------------------------------------------------
+
+some question :
+what is encoding ? , what is use oƒ utf - 8 , utf - 16
+
+
+
+
+
+--------------------------------------------------
+
+tutorial starts ::-> 
+
+-> key-value mapping indentation 
+eg,
+datacenter:   
+  location: canada  
+  cab: 15  
+
+->list indentation
+animals:  
+  - dog  
+  - cat  
+  - mouse  
+
+-> Yaml data types 
+1. Scalar  -> Numeric data types and String
+2. List 
+3. Dictionary 
+
+1.
+-> In YAML, we can write a multi-line string in a single line using > symbol. In this, a newline character(\n) will be ignored. 
+
+str: >  
+       this is a multi-line string it  
+       spans more than one  
+       line  
+
+(most of we prefer to write in single line )
+
+-> In YAML, we can write multi-line string in a newline using | symbol. In this, the newline character(\n) will be included.
+
+str: |  
+     this is a multi-line string it  
+     spans more than one  
+     line  
+
+2.List
+we can define list in two types
+-> items 
+    -6
+    -7
+    -8 
+-> name: ['jayesh','mahesh']
+
+3.Dictionary
+it is used in all the document because yml uses  key-value pair syntax
+
+
+-> comments # write some code (for the naming we use the underscod not camelcase in yml)
+
+course:                                        -> its become an object 
+  course_name : "yaml course for devops"
+  version: 1.0
+  price: &price 499                            -> make a variable of price 
+  is_public: true 
+  release_date: 2021-04-05
+  tags:                                         -> become an list
+    -Python 
+    - web developer 
+  courses_ta: ["jayesh","ramesh"]  
+  ta_details:                                    ->become a array of object
+    - name:"jayesh"
+      email:"j@gmail.com"
+      role:"content admin"
+    - name: "mahesh"
+      email: "anu@lco.dev"
+      role: "artist" 
+    - {name: "rakesh" , email: "rakesj@gmail" , role: "devops"}
+  process_payment: *price
+  adv : &adv:
+    mykey: myval
+
+  another_adv:
+    one:two
+    <<: *adv  
+

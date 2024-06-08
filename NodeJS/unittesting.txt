@@ -1,0 +1,12 @@
+there are three types of test
+-> unit test  -> test of  unit part of application without external dependency 
+-> integration test -> test the application with external dependency 
+-> end to end test  -> drives an application through its UI 
+
+
+unit testing frameworks :
+-> Jasmine 
+-> Mocha /chai / snion 
+-> Jest  -> we use jest for testing 
+
+

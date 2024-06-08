@@ -1,0 +1,242 @@
+DOCKER tutorial: 
+
+
+Docker complete cheatsheet:
+---> if we don't know about command or command of command use docker command --help 
+
+commands for docker images:->
+
+--> 
+
+Pull images from dockerHub : docker pull image 
+Run images : docker run  -it(it is use for interactive way) -d (it is use for deteach mode) imageName
+Remove image : docker rmi imageIDLL
+Show all images : docker images ls 
+show only images only its id : docker image -q
+
+
+commands for docker container:-> 
+Show all container: docker container ls 
+Show running container : docker ps
+Show all container : docker ps -a
+Docker inspect Repository: docker inspect repository name
+To stop running container: docker stop containerID
+For removing container: docker rm containerID
+pause the container : docker pause containerID
+For removing all container : docker container rm $(docker container ls -a -q)    //here dollor sign is used to run nested command 
+Run container :-> docker run -it containerID/IamgeID 
+for starting priviously stoped container -> docker start -i containerID (here i means -it interactive)
+
+
+command for docker:->
+
+Show Docker history :docker history ImageID
+For showing docker stats :-> docker stats ContainerID  // it shoẇs the cpu utilization of container 
+For pause the docker :->Docker pause containerID
+For killing process running on the particluar container:-> docker kill containerID
+for stop the docker deamon : service docker stop
+
+
+Docker-File:(for create own images)
+
+dockerfile syntax :-> Dockerfile = comments + Command + Arguments 
+#comments
+command arguments arguments
+
+--> A dockerFile contains instruction for buliding an image 
+
+
+-> creating dockerfile command 
+1) create Dockerfile  (D should be capital)
+2) FROM command ->  FROM ImageName (base image konsi uthani hai woh batata hai)
+2.1) WORKDIR command -> go to the working dir where we start to work on programme 
+2.2)COPY command -> copy everything to the image container 
+6) ADD command -> 
+3) RUN command -> for building the image in local machine 
+4) CMD command -> for running command in the docker image 
+5) EnteryPoint command -> used the running first command 
+7) Enviroment command -> 
+8) EXPOSE Command ->  expose the port to local machine
+9) Maintainer Command -> its show who bulids that images 
+10) USER command -> use for particular user Command
+
+
+// steps for creating dockerfile and manage images in docker container 
+
+1) FROM baseImage 
+2) WORKDIR  path     //  this show the current dir path of image 
+3) COPY . .     // that means first . denote current directory of windows and second . is current directory of image 
+                // all files from system to copy in images container 
+   (COPY ["systemfile","imagefile path"] ->  it is other syntax of the copy file from the system )(in this command all file copy but we know nodemoduels like folder is excluded to copy )
+4) RUN command   // it is used after coping file from system then command is needed to run this is noted here.  its run command when image is buliding
+5) ENV envvar=value  // note there is no sapce between = and value (there are some command for print the env varible in commandline *printenv && *echo $envvarName && * envName)
+6) EXPOSE 3000:3000 // this means the first 3000 port of system is connected to the 3000 port of images / container 
+7) CMD npm run start  // this command is excuated on the image CLI / terminal   , this command is exucated after the building the image
+    ->in this two type of execution of command
+    first -> shell 
+    CMD npm run start  // its run on shell of image /bash or /bin/sh
+   ----> CMD ['npm','start'] // this command is excuated on this directory path  -> we use this type of command because is easy to cleanup images
+8) ENTERYPOINT ['npm','start'] -> this command is uses for the staring the application and we can not modify it whenever CMD is more felxiable and change with terminal
+
+
+//how to optimize time of  buliding the images 
+
+---> use first copy the pakage.json and package-lock.json
+
+here eg. given -> 
+
+FROM node:20.6.1-alpine3.18
+WORKDIR /app
+COPY package*.json .
+RUN npm install 
+COPY . .
+ENV API_URL=http://www.google.com/
+EXPOSE 3000 
+ENTRYPOINT [ "npm","start"]
+
+
+// steps for runing the dockerfile (must do)
+ 1) docker build -t myapp:1.0  .  -> this command is use for buliding images in the docker deamon and -t denotes the tag for giving meaning full name to image and last . denote the current path / directory 
+ 2) docker run -it  imageName sh  -> this command is run the image in the shell of linux (we most prefered to work with shell or bash )
+
+// how to give tag name to an image 
+
+1)staring the building of image -> docker build -t react-app:latest(1.0.0) 
+2)removing tag from the images -> docker image remove react-app:1 
+
+
+//how to share image on dockerhub 
+ 
+// make repo on the dockerhub 
+1) docker login -> login in the dockerhub
+2) docker push imageName
+
+// saving an image on local machine 
+-> docker image save -o imageName.zip(imageName.tar) imageName
+
+//loading an images form local machine to dockerdeamon 
+-> docker image load -i imageName.tar 
+
+
+
+///////////////// Docker container  ///////////////////  
+->  for running the docker container in background :-> docker run -d 
+     --name  Name  ContainerID/ containerName 
+
+-> when any confilct to run docker container we firstly show docker logs 
+    for show log :=> docker logs containerID 
+    for show log at timestamp -> docker logs -t containerID 
+
+
+-> for exporting the ports from the images running of container 
+    docker run -d -p systemport:dockerimageport --name containerName  imageName 
+
+eg. -> docker run -d -p 8000:3000 --name c1 react-app 
+
+-> docker run -> command for running new container 
+-> docker exec -> command for running already running container 
+-> docker start -> command for staring priviously stop container
+
+-> we use :-> docker exec -it containerName sh (it is use for running command on the image/container)
+
+-> for remove the stop container -> docker rm containerName/ conatinerID 
+-> for remove the running container -> docker rm -f containerName/ containerID 
+-> removing all container -> docker container prune 
+
+
+/////////////// docker volumes ////////////
+
+
+-> volume is using the data persiting (data storing).
+
+
+for creating volume -> docker volume create volumeName
+
+for  inspect voume -> docker volume inspect volumeName 
+
+make a new conatiner with volume -> docker run -d -p hostport:dockerPort -v (already created vloumeName):/path imageName 
+
+eg :-> docker run -d -p 3000:3000 -v app-data:/app/data react-app 
+
+
+for coping file container to host -> docker cp sourcepath: destinationpath 
+
+
+// when we change some code in host machine but it is not changed in the docker container so every time we build new images is very hard and not to use copy everytime 
+
+-> we use the mapping to host with the container 
+
+docker run -d -p 5001:3000  $(pwd):/app instaclone
+
+
+
+
+
+//////////////////         Docker Compose        ///////////////////////
+
+-> it is used for run multiple container simustainously 
+-> it is use the ymal file / yml file 
+
+for running the docker Compose file -> docker-compose up 
+for closing the docker Compose file -> docker-compose down 
+
+-> parts of the yml 
+version : specify the version of docker (3)
+service : specify the container and lot more things
+
+
+
+
+/////////////////// Difference between  the "DockerFile" and "docker-compose.yml" file 
+
+DokerFile-> 
+    it is use most for building a particular imamge in the top layar particular service 
+    A Dockerfile is a text file used to define a set of instructions for building a Docker image
+
+Docker-compose.yml -> 
+    Docker Compose is a tool for defining and running multi-container Docker applications.
+    it is used to define the services, networks, volumes, and other configurations for a multi-container application. It allows you to define how different containers interact with each other.
+   
+
+
+///////////////       NOTES         ////////////////
+
+differences between the docker start and docker exec :->
+
+->docker start is used when a container is in a stopped or paused state.
+->docker exec is used when a container is already running.
+
+// cleaning workspace in docker 
+(first of all we always remove container)
+->romove all the container -> docker container rm  -f $(docker container ls -a -q)
+(after that remove all images)
+-> remove all images -> docker images rm $(docker images ls -q)
+
+
+
+
+
+////////          Running Multi-container Apps              ////////////// 
+
+-> creating compose-file
+
+version: "3.8"    (define version of dockercompose file )
+service:
+    web:
+        build: ./frontend 
+        ports:
+            -3000:3000
+    api:
+        build: ./backend 
+        ports:
+            -3001:3001
+        enviroment:
+            DB_URL: mongodb://db/vidly
+    db:
+        image: mongo:4.0-xenial
+        ports:
+            -27017:27017
+        volumes:
+            -vidly:/data/db
+volumes:
+    vidly:

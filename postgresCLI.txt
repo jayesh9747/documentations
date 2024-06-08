@@ -1,0 +1,96 @@
+--> it is a postgres CLI tutorial
+-> In which we learn about the postgres commands to create database and  making good hands on CLI 
+
+postgres=# meaning starting new command
+postgres-# meaning continue to the previous command
+
+
+NOTE :  in psql terminal how we find that our command is terminating or not -> that is finding by - after database name then it is continue our command in next line.
+
+-> first thing postgres is runs on  5432 port
+
+_  postgres command line is psql 
+_  for listing the database -> \l
+_  for listing tables in the database -> \dt 
+_ describe particular table -> \d table name 
+_ listing the function in particular table -> \df 
+_ schema available in  Db -> \dn
+_list of user available in Db -> \du
+_available views in db -> \dv
+for excituting command directly use command -> select * from employee
+for showing output of priviously excituting command -> \g
+for showling all command for help -> \?
+for help for particular command -> \h command first two words
+
+
+-> SQL Commmands :
+
+ 
+===> retriving Data from Single table 
+
+
+
+SELECT caluse :-> for selecting items from table 
+ eg = > select * from table_name 
+    = > select colum_1 , colum_2 from table_name  ---- only retriving the colum_1 and colum_2
+
+AS caluse :-> used for giving name to the colum in only retriving process 
+    eg = > select colum_1 AS col1 from table_name -> here only show colum_1 as col1 baki waisa ka waisa hi rahega 
+
+SELECT DISTICT colum_1 from table_name  -> its only retriving distict value of this colum 
+
+WHERE caluse :-> used for apply condition on the retriving table. 
+comparision operator -> = , != , <> , > , < , >= , <=
+
+excituting the multiple condition -> 
+Use the OR , AND , NOT operator in the where caluse. (it is basically gate operator)
+
+IN operator :> used for retriving object in this list or not 
+    eg = > select colum_1 AS col1 from table_name where colum_1 in ('VAL1', 'VAL2','VAL3'); 
+    
+BETWEEN operator :> use the retriving the value between that values 
+    eg = > select * from customer where Points BETWEEN 1000 AND 2000;
+
+LIKE operator :> used from retriving matching values into the table 
+    eg = > select * from customer where lastName LIKE 'J%' (it  retriving all the cols whose lastname starts with J. modulous basically avva dey koi pan character ne teni jagya e)
+    eg = > select * from customer where lastName LIKE '_J' (here _ exactly matches the 2 letter word and whose last char is 'J'. )
+
+
+REGEXP (reglular expression) :> it is used for the matching values into the table but more effictiently 
+    eg = > select * from customer where lastName REGEXP 'J'  :> it matches all rows whose lastname includes 'J'
+    
+    some operator for reglular expression:
+    ^ --> it is used for begging eg. '^Ja' retriving rows whose lastname start with 'Ja'
+    $ --> used for exepression to the end of the word 
+    | --> logical or eg REGEXP 'Ja|pl|vs' retriving the rows whose matches with ja or vs or pl 
+    [] -> for matching only this keyword  eg:> REGEXP '[abc]e' mathces be | ce | ae.
+    [a-c]  -> means koi bhi chalga abc maise 
+
+IS NULL operator :-> its check the any cell is null or not used in the where caluse
+    eg. select * from customer where phone IS NULL -> retriving this rows whose phone is null 
+    eg. select * from customer where phone IS NOT NULL -> retriving these rows whose phone is not null 
+
+ORDERED BY :=> used to retriving data in  the sorted from by one colum 
+    eg. select * from customer ORDERED BY firstName  -> retriving in inc. order 
+    eg. select * from customer ORDERED BY firstName DESC -> retriving in descring order 
+
+LIMIT caluse : -> used for retriving limiting rows 
+    eg. select * from customer LIMIT 3 -> its retriving first 3 rows 
+    eg. select * from customer LIMIT 6,3 -> its retriving 3 rows after skiping first 6 rows
+
+
+
+
+===> retriving data from multiple table 
+
+Inner Join : 
+Select col1 , col2 , col3  from Table1_name JOIN Table2_name ON condition
+    eg. Select order.orderId , customer.customerId , customer.firstName , customer.lastName 
+            from customer JOIN order ON customer.customerId = order.customerId
+
+JOiNING the multiple table 
+Select col1 , col2 , col3  from Table1_name JOIN Table2_name ON condition1 JOIN Table3_name On condition2
+    eg. Select order.orderId , customer.customerId , customer.firstName , customer.lastName 
+            from customer JOIN order ON customer.customerId = order.customerId 
+            Join status On Status.Id = oreder.status_id
+            

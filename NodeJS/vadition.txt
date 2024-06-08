@@ -1,0 +1,55 @@
+-> In this section we use joi module and some built in module of validator of mongoose 
+
+
+=> builtIn validator in mongoose
+
+> required : required or not , ismai ham function bhi pass kar sakte hai jaise -> function () {return this.ispublished} // yaha pe ham apna logic likh sakte hai 
+> minlength : set the min length of string 
+> maxlength : set max length of string
+> enum: use for selecting either this or that 
+> make custom validator with use of logic with function 
+> match: use for email & other string validator
+ 
+=> custom validator 
+eg.
+
+tags:{
+    type: Array,
+    validate:{
+        validator: function(v){
+            return v && v.length > 0; //logic 
+        },
+        message: 'A course should have at least one tag.'
+    }
+}
+
+
+=> async validator 
+
+tags:{
+    type: Array,
+    validate:{
+        isAsync :true,
+        validator: function(v,callback){
+            return v && v.length > 0; //logic 
+            callback(result);
+        },
+        message: 'A course should have at least one tag.'
+    }
+}
+
+
+=> validator error message 
+iterating the error object->  like error.message 
+
+we use get and set function for modify and applying the value 
+eg, 
+
+price:{
+    type:Number,
+    required:true,
+    get:(v)=>math.round(v),
+    set:(v)=> Math.round(v),
+
+}
+

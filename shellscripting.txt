@@ -1,0 +1,15 @@
+
+bash scripting in ubuntu 
+
+1. what is my shell type ? => echo $0
+2. valid shell in ubuntu check => cat /etc/shells
+3. text editor : -> vi cmd 
+    for saving file :wq 
+4. read file : cat file name
+5. how to run script 
+    -> script has execute permission rwx(read - write) ; for checking this permission -> ls -ltr
+    -> run script => bash scriptName  or give permission then ./scriptName
+    -> giving permission :  chmod u+x fileName
+    
+
+

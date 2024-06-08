@@ -1,0 +1,19 @@
+// this is type script tutorial 
+
+->typescript is a superset of javascirpt 
+-> in the typescript we must define the type of each  varible 
+-> for running typescript we need to a typescript complier.
+-> we run the typescript file using "tsc typescriptfile"
+
+
+making typescript backend app intitilazation
+
+->intitilazation of typescript "npx tsc --init -y"
+->add typescript terminal in app -> "yarn add tsc-watch -D"
+
+->intitilazation of prisma -> npx init prisma 
+
+there is some documentation which i prefered: https://github.com/hiteshchoudhary/typescript-youtube-22
+
+//////             typescript DataType   /////////
+

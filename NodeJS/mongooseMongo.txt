@@ -1,0 +1,67 @@
+Mongoose tutorial :-> 
+
+mongoose datatype  :-> Number , String , [array],Date,Boolean,Buffer,ObjectID 
+
+query documents -> find, findbyID , findOne 
+
+
+for finding the particluar dockument ->
+
+const course = await Course.find({
+    author:'mosh' , ispublished: 'true'
+}).limit(10)
+  .sort({name:1}) // acending order  for decending order -1 
+  .select({name})  // return only name in the documents 
+
+
+// comaprision query 
+
+eq -> equal 
+ne -> not equal 
+gt ->greater than 
+gte -> greater than or equal to 
+lt -> less than 
+lte -> less than or equal to 
+in 
+nin -> not in
+
+// logical query 
+ 
+or 
+and 
+
+const course = await Course.find()
+.or([{name:"mosh"},{isavilable: "true"}])
+.and([{name:"jayesh"},{age:19}])
+
+//Regular expression 
+
+
+->start with mosh 
+eg. const course = await course.find({
+    author: /^Mosh/
+})
+
+->end with hamedani
+eg. const course = await course.find({
+    author: /hamedani$/   (for ignoring camel case ise i -> /hamedani$/i)
+})
+
+
+-> contain mosh 
+eg. const course = await course.find({
+    author: /*mosh*/   (for ignoring camel case ise i -> /hamedani$/i)
+})
+
+-> for counting the documents 
+eg. const course = await course.find({
+    author: /*mosh*/   (for ignoring camel case ise i -> /hamedani$/i)
+}).count()
+
+
+-> for pagination use skip method
+
+
+-> Data validation in MongoDB using mongoose 
+
+

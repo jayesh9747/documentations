@@ -1,0 +1,11 @@
+graphQL tutorial:->
+
+there are two type in graphQL :-> 
+->query -> fetch data -> it have own resolvers 
+->mutation ->Post thread -> it have also own resolvers 
+
+->use schema for graphql 
+
+-> have one  another layer -> services 
+
+-> ORM(data access object)
